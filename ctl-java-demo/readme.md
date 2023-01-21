@@ -4,7 +4,7 @@
 
 1. Build Docker Image using dockerfile
 ```bash
-docker build -t ctlwebapp
+docker build -t ctlwebapp .
 ```
 2. Start the Docker Container
 ```bash

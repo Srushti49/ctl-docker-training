@@ -1,16 +1,16 @@
 ## How to Run Docker Project
-#Build Docker Image using dockerfile
-`docker build -t ctlwebapp`
 
+## Setup
 
-#Run Docker Container locally
-`docker run -p 80:8080 ctlwebapp`
-
-#Validate Application
-####Inline code
-`http://localhost/CrudDemoWithMySql`
-
-####Inline code
-
-`$ npm install marked`
-
+1. Build Docker Image using dockerfile
+```bash
+docker build -t ctlwebapp
+```
+2. Start the Docker Container
+```bash
+docker run -p 80:8080 ctlwebapp
+```
+3. Validate Application
+```bash
+http://localhost/CrudDemoWithMySql
+```

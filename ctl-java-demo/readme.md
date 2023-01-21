@@ -1,6 +1,6 @@
-## How to Run Docker Project
+## How to Run Docker CTL Java Demo Project
 
-## Setup
+## Steps
 
 1. Build Docker Image using dockerfile
 ```bash

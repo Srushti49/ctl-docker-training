@@ -10,3 +10,7 @@
 ####Inline code
 `http://localhost/CrudDemoWithMySql`
 
+####Inline code
+
+`$ npm install marked`
+

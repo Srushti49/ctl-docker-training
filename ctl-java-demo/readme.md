@@ -7,5 +7,6 @@
 `docker run -p 80:8080 ctlwebapp`
 
 #Validate Application
+####Inline code
 `http://localhost/CrudDemoWithMySql`
 

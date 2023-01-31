@@ -1,0 +1,18 @@
+C:\Users\gaden>aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin <id>.dkr.ecr.ap-south-1.amazonaws.com
+Login Succeeded
+
+Logging in with your password grants your terminal complete access to your account.
+For better security, log in with a limited-privilege personal access token. Learn more at https://docs.docker.com/go/access-tokens/
+
+C:\Users\gaden>docker tag ctlwebapp:latest <id>.dkr.ecr.ap-south-1.amazonaws.com/ctlwebapp:latest
+
+C:\Users\gaden>docker push <id>.dkr.ecr.ap-south-1.amazonaws.com/ctlwebapp:latest
+The push refers to repository [<id>dkr.ecr.ap-south-1.amazonaws.com/ctlwebapp]
+18835a8d9402: Pushed
+03d3dee4bbe1: Pushed
+c41152727e7f: Pushing [==================================================>]  20.68MB
+a8ac486592b6: Pushed
+9a0a891503fb: Pushed
+b24cd52a8e99: Pushing [=========>                                         ]  29.18MB/151.7MB
+4f169ae5a253: Pushing [========================================>          ]  27.59MB/34.3MB
+6515074984c6: Pushing [=====================>                             ]  33.08MB/77.8MB

@@ -1,0 +1,3 @@
+FROM nginx
+LABEL maintainer="codvatechlabs@gmail.com"
+COPY ./static-website/ /usr/share/nginx/html

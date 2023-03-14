@@ -1,4 +1,4 @@
-## How to Run Docker CTL Java Demo Project
+## How to Run Java App using Tomcat Docker Container
 
 ## Steps
 

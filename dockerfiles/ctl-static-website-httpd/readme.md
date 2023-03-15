@@ -4,11 +4,11 @@
 
 1. Build Docker Image using dockerfile
 ```bash
-docker build -t =ctlwebhttpd .
+docker build -t ctlwebhttpd .
 ```
 2. Start the Docker Container
 ```bash
-docker run -d -name=static-web-httpd -p 8888:80 ctlwebhttpd
+docker run -d --name static-web-httpd -p 8888:80 ctlwebhttpd
 ```
 3. Validate Application
 ```bash

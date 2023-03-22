@@ -1,3 +1,4 @@
 FROM nginx
 LABEL maintainer="codvatechlabs@gmail.com"
 COPY ./html-code/ /usr/share/nginx/html
+EXPOSE 80

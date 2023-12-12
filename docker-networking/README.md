@@ -1,54 +1,82 @@
-## Docker Networking Concepts
+# Docker Networking Tutorial
+
+This tutorial provides step-by-step instructions for working with Docker networking concepts, covering the creation of a custom network, launching containers within the network, integrating Grafana with Prometheus, and managing network connections.
 
 ## Steps
 
-1. Create a network
+### 1. Create a Network
 
 ```bash
 docker network create custom-network --driver bridge
 docker network ls
 ```
-2. Launch the Prometheus container within your network
-Use the --network <NETWORK> argument to the docker run command to attach the container to 
-the prometheus-network network.
+
+### 2. Launch Prometheus Container
+
+Use the `--network` argument to attach the container to the custom network.
 
 ```bash
 docker run --name prometheus-console -d -p 9090:9090 --network custom-network bitnami/prometheus:latest
-
 ```
-3. Run Grafana containers
-We can launch other containers using the same flag (--network NETWORK) in the docker run command. If you also set a name to your container, you will be able to use it as hostname in your network.
+
+### 3. Run Grafana Containers
+
+Launch other containers within the same network using the `--network` flag.
 
 ```bash
 docker run -d --name=grafana -p 3000:3000 --network custom-network grafana/grafana
 ```
 
-4. Fetch IP Address of Grafana and Prometheus 
-193e9b8f64ec -- 172.19.0.3  - grafana
-3a1a8411fd87 -- 172.19.0.2 - prometheus-console
+### 4. Fetch IP Address of Grafana and Prometheus
 
-docker inspect 193e9b8f64ec | grep IPAddress
+```bash
+docker inspect <container_id> | grep IPAddress
+```
 
-5.  Integrate Grafana application with Prometheus 
+Example:
+- Prometheus: 172.19.0.2
+- Grafana: 172.19.0.3
 
-6. Validation (data source working as expected)
+### 5. Integrate Grafana with Prometheus
 
-7. Access container using name instead of IP Address
+Configure Grafana to use Prometheus as a data source.
 
-8. How to add existing container to custom network 
-If you already have a container running, you can to connect it to your new 
-user-defined bridge network without having to restart the container. 
+### 6. Validation
 
-For example:
-docker network connect custom-network mongodb
+Ensure that the data source is working as expected.
 
+### 7. Access Container using Name instead of IP Address
+
+Use the container names as hostnames within the network.
+
+### 8. Add Existing Container to Custom Network
+
+Connect an existing container to the user-defined bridge network without restarting it.
+
+```bash
+docker network connect custom-network <container_name>
+```
+
+Example:
+
+```bash
 docker run -d -p 80:80 --name=webapp1 nginx
 docker network connect custom-network webapp1
+```
 
-9. Disconnect/Connect prometheus from custom network 
+### 9. Disconnect/Connect Prometheus from Custom Network
+
+```bash
 docker network disconnect custom-network prometheus-console
 docker network connect custom-network prometheus-console
+```
 
+### 10. Run Node Exporter
 
-10. Run node exporter 
+Launch Node Exporter within the custom network.
+
+```bash
 docker run -d --name node-exporter-node1 -p 9100:9100 --network custom-network bitnami/node-exporter:latest
+```
+
+Feel free to explore and experiment with different Docker networking scenarios using the provided steps.

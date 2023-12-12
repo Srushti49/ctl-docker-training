@@ -1,52 +1,80 @@
-Step 01:
-Setup 02 nginx containers 
+# Docker Volume Tutorial
 
-Step 02:
+This tutorial guides you through creating and managing Docker volumes for an Nginx web server. The tutorial includes steps to set up two Nginx containers, update the index.html file on both hosts, create a new Docker image, push the image to Docker Hub, and set up a new container using the custom image.
+
+## Step 01: Setup 02 Nginx Containers
+
+```bash
 docker run -d -p 8081:80 --name web-server-01 nginx
 docker run -d -p 8082:80 --name web-server-02 nginx
+```
 
+Or using a custom image:
 
+```bash
 docker run -d -p 8081:80 --name web-server-01 ctldevopslabs/ctlnginxtest:tagname
+```
 
+## Step 02: Update index.html on both hosts
 
-Step 03: 
-Update index.html on both host 
+Access the container shell and install the vi package:
 
-docker exec -it 938057a5ea6b bash
-Use below commands to install vi package
+```bash
+docker exec -it <container_id> bash
 apt-get update
 apt-get install vim
+```
 
-update index.html
+Update the index.html file:
+
+```bash
 cd /usr/share/nginx/html/
 vi index.html
+```
 
-Step 04: Validation 
-Validation 
+## Step 03: Validation
 
+Validate the changes made to the containers.
 
-Step 05: Create new image using below command 
-Usage: docker commit  <username/imagename>
+## Step 04: Create a New Image
 
-docker commit 8e100343621f ctldevopslabs/ctlnginxtest
+```bash
+docker commit <container_id> ctldevopslabs/ctlnginxtest
+```
 
+## Step 05: View all Images
 
-Step 06: View all images present on local 
+```bash
 docker image ls
+```
 
-Step 07 : Login to Docker Hub Repo 
+## Step 06: Login to Docker Hub Repo
+
+```bash
 docker login
+```
 
-Step 08: Push image to Docker Hub Repo
+## Step 07: Push Image to Docker Hub Repo
+
+```bash
 docker push ctldevopslabs/ctlnginxtest
+```
 
-Step 09 : Stop and delete containter/images
-docker stop 
-docker rm 
-docker rmi
+## Step 08: Stop and Delete Container/Images
 
-Step 10 : Setup new container using custom image 
+```bash
+docker stop <container_id>
+docker rm <container_id>
+docker rmi <image_id>
+```
+
+## Step 09: Setup New Container using Custom Image
+
+```bash
 docker run -d -p 8081:80 --name web-server-01 nginx
 docker run -d -p 8082:80 --name web-server-02 nginx
+```
 
-Step 11 : Validation of new container web console 
+## Step 10: Validation of New Container
+
+Validate the new containers using the web console.
